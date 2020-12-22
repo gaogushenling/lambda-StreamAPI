@@ -81,5 +81,24 @@ public class SortList {
         //都是倒序，最后面加一个reserved
         //先是倒序（加reserved），然后正序
         //先是正序（加reserved），然后倒序（加reserved）
+
+        //8、自定义Comparator排序
+       /* employees.sort(new Comparator<Employee>() {
+            @Override
+            public int compare(Employee em1, Employee em2) {
+                if(em1.getAge() == em2.getAge()){
+                    return 0;
+                }
+                return em1.getAge() - em2.getAge() > 0 ? -1:1;
+            }
+        });*/
+        //简化
+        employees.sort((em1,em2) -> {
+            if(em1.getAge() == em2.getAge()){
+                return 0;
+            }
+            return em1.getAge() - em2.getAge() > 0 ? -1:1;
+        });
+        employees.forEach(System.out::println);
     }
 }
